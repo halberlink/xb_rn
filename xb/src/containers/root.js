@@ -18,9 +18,7 @@ import pxToDp from '../api/pxToDp'
 const IndexStack = createStackNavigator(
     {
         Index,
-        TestDetail:{
-            screen:TestDetail
-        }
+        TestDetail
     },
     {
         backBehavior:'none',
