@@ -12,14 +12,20 @@ export default class PushMessage extends Component {
     }
 
     render() {
-        let numComponent = this.props.NewsNum!==0 ?<View style={styles.newsnum}>
-            <Text style={styles.num}>{this.props.NewsNum}</Text>
-        </View>:null;
 
         return (
             <View style={styles.container}>
                 <Image style={styles.newsicon} source={{uri:'https://m.xiaobaijinfu.com/static/images/weex/xiaoxi_new.png'}}/>
-                {numComponent}
+                {
+                    this.props.NewsNum!==0?
+                        (
+                            <View style={styles.newsnum}>
+                                <Text style={styles.num}>{this.props.NewsNum}</Text>
+                            </View>
+                        ):(
+                            <View style={{width:0,height:0}}></View>
+                        )
+                }
             </View>
         );
     }

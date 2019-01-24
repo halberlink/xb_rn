@@ -8,6 +8,7 @@ import {
     Text
 } from 'react-native';
 import Index from '../pages/index/Index';
+import TestDetail from '../pages/index/TestDetail';
 import Home from '../pages/home/Home';
 import Invite from '../pages/invite/Invite';
 import CreateBankCard from '../pages/createBankCard/CreateBankCard';
@@ -16,8 +17,9 @@ import pxToDp from '../api/pxToDp'
 //每个tab 的 stack
 const IndexStack = createStackNavigator(
     {
-        Index:{
-            screen:Index
+        Index,
+        TestDetail:{
+            screen:TestDetail
         }
     },
     {
@@ -41,39 +43,63 @@ const IndexStack = createStackNavigator(
 
             tabBarLabel:({ focused, tintColor }) => {
                 const { routeName } = navigation.state.routes[navigation.state.index];
-                switch (routeName){
-                    case 'Index':
 
-                        if(focused){
+                if(focused){
 
-                            return <Text style={{color:'#4089ff',fontSize:12}}>首页</Text>;
-                        } else {
-                            return <Text style={{color:'#7a7d84',fontSize:12}}>首页</Text>;
-                        }
-                        break;
-
+                    return <Text style={{color:'#4089ff',fontSize:12}}>首页</Text>;
+                } else {
+                    return <Text style={{color:'#7a7d84',fontSize:12}}>首页</Text>;
                 }
+
 
             },
             tabBarIcon: ({ focused, tintColor }) => {
                 const { routeName } = navigation.state.routes[navigation.state.index];
-                switch (routeName){
-                    case 'Index':
-                        if(focused){
-                            return <Image source={{uri:'https://m.xiaobaijinfu.com/static/images/weex/shouye-1.png'}} style={{height:pxToDp(50),width:pxToDp(50)}}></Image>;
-                        } else {
+                if(focused){
+                    return <Image source={{uri:'https://m.xiaobaijinfu.com/static/images/weex/shouye-1.png'}} style={{height:pxToDp(50),width:pxToDp(50)}}></Image>;
+                } else {
 
-                            return <Image source={{uri:'https://m.xiaobaijinfu.com/static/images/weex/shouye-0.png'}} style={{height:pxToDp(50),width:pxToDp(50)}}></Image>;
-                        }
-                        break;
-
+                    return <Image source={{uri:'https://m.xiaobaijinfu.com/static/images/weex/shouye-0.png'}} style={{height:pxToDp(50),width:pxToDp(50)}}></Image>;
                 }
-
-            },
+            }
         }),
 
     }
 )
+const Index_Stack = [IndexStack]
+Index_Stack.forEach((item) => {
+    item.navigationOptions = ({ navigation }) => {
+        let tabBarVisible = true
+        if (navigation.state.index > 0) {
+            tabBarVisible = false
+        }
+        return {
+            tabBarVisible,
+            tabBarLabel:({ focused, tintColor }) => {
+                const { routeName } = navigation.state.routes[navigation.state.index];
+
+                if(focused){
+
+                    return <Text style={{color:'#4089ff',fontSize:12}}>首页</Text>;
+                } else {
+                    return <Text style={{color:'#7a7d84',fontSize:12}}>首页</Text>;
+                }
+
+
+            },
+            tabBarIcon: ({ focused, tintColor }) => {
+                const { routeName } = navigation.state.routes[navigation.state.index];
+                if(focused){
+                    return <Image source={{uri:'https://m.xiaobaijinfu.com/static/images/weex/shouye-1.png'}} style={{height:pxToDp(50),width:pxToDp(50)}}></Image>;
+                } else {
+
+                    return <Image source={{uri:'https://m.xiaobaijinfu.com/static/images/weex/shouye-0.png'}} style={{height:pxToDp(50),width:pxToDp(50)}}></Image>;
+                }
+            }
+        }
+    }
+})
+
 const InviteStack = createStackNavigator(
     {
         Invite:{
