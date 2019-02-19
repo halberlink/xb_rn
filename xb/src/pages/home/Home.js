@@ -19,6 +19,9 @@ class Home extends Component {
             name:"哈哈"
         }
     }
+    componentWillMount(){
+
+    }
     componentDidMount() {
     }
     componentWillReceiveProps(){
@@ -26,11 +29,13 @@ class Home extends Component {
     }
     render() {
         const { navigate } = this.props.navigation;
+
         return (
             <View style={styles.container}>
                 <TouchableOpacity style={{height:60,backgroundColor:'orange',justifyContent: 'center',}}
                                   onPress={() => this.props.dispatch(homecreators.homeInit(this.state.name,this.state.index))} >
                     <Text>{this.props.name}</Text>
+                    <Text>{this.props.loginState}</Text>
                 </TouchableOpacity>
             </View>
         );
@@ -43,9 +48,10 @@ const styles = StyleSheet.create({
     },
 });
 const mapStateToProps = (state) => {
-    const { Index } = state;
+    const { Index , Login } = state;
     return {
-        name:Index.name
+        name:Index.name,
+        loginState:Login.loginState
     };
 };
 const mapDispatchToProps = (dispatch) => {

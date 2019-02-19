@@ -73,10 +73,16 @@ export default class Main extends Component {
 
 
                         <View style={styles.uiFnLine}></View>
-                        <View style={styles.uiFnBox}>
-                            <Image style={styles.uiFnImg} source={{uri:'https://m.xiaobaijinfu.com/static/images/weex/xb_znhk.png'}}></Image>
-                            <Text style={styles.uiFnTxt}>智能还款</Text>
-                        </View>
+                        <TouchableOpacity
+                            onPress={() => navigate('Login')}
+                            activeOpacity={1}
+                        >
+                            <View style={styles.uiFnBox}>
+                                <Image style={styles.uiFnImg} source={{uri:'https://m.xiaobaijinfu.com/static/images/weex/xb_znhk.png'}}></Image>
+                                <Text style={styles.uiFnTxt}>智能还款</Text>
+                            </View>
+                        </TouchableOpacity>
+
                     </View>
                     <View style={styles.listBox}>
                         <View style={[styles.uiList,styles.qtMB20]}>
