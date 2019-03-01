@@ -13,11 +13,11 @@ import pxToDp from '../../api/pxToDp';
 import PushMessage from '../../components/index/PushMessage'
 export default class Main extends Component {
     static navigationOptions = {
-        headerTitle: '小白信用卡管家',
+        headerTitle: '小白信用卡管家123',
         headerStyle: {
             backgroundColor: '#4089ff',
         },
-        headerRight:<PushMessage NewsNum="1"/>,
+        headerRight:<PushMessage NewsNum="2"/>,
         headerTintColor: '#fff',
         headerTitleStyle: {
             fontWeight: 'bold',
@@ -51,6 +51,8 @@ export default class Main extends Component {
             ]
         }
     }
+
+
     componentDidMount(){
         console.log(this.props.navigation)
     }
@@ -74,7 +76,7 @@ export default class Main extends Component {
 
                         <View style={styles.uiFnLine}></View>
                         <TouchableOpacity
-                            onPress={() => navigate('Login')}
+                            onPress={() => navigate('RealName')}
                             activeOpacity={1}
                         >
                             <View style={styles.uiFnBox}>

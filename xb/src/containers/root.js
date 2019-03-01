@@ -6,6 +6,8 @@ import {
     View,
     Text
 } from 'react-native';
+
+
 import Index from '../pages/index/Index';
 import TestDetail from '../pages/index/TestDetail';
 import Login from '../pages/login/Login';
@@ -13,11 +15,21 @@ import Home from '../pages/home/Home';
 import Invite from '../pages/invite/Invite';
 import CreateBankCard from '../pages/createBankCard/CreateBankCard';
 import pxToDp from '../api/pxToDp'
+import RealName from "../pages/realname/RealName";
+import BaseInfoDetail from "../pages/realname/BaseInfoDetail";
+
+
+
+
+
+
 //每个tab 的 stack
 const IndexStack = createStackNavigator(
     {
         Index,
-        TestDetail
+        TestDetail,
+        RealName,
+        BaseInfoDetail,
     },
     {
         backBehavior:'none',
@@ -145,6 +157,7 @@ const CreateBankCardStack = createStackNavigator(
     },
     {
         backBehavior:'none',
+        headerBackTitleVisible:true,
         tabBarOptions:{
             // activeTintColor:'#5599ff',
             // style:{
@@ -248,6 +261,7 @@ const MainScreenNavigator=createBottomTabNavigator(
         CreateBankCard:CreateBankCardStack,
         Home:HomeStack,
 
+
     }
 );
 MainScreenNavigator.navigationOptions = ({navigation})=>{
@@ -259,7 +273,7 @@ MainScreenNavigator.navigationOptions = ({navigation})=>{
 }
 const EntranceNavigator = createStackNavigator(
     {
-        Index:{
+        Main:{
             screen:MainScreenNavigator,
             navigationOptions: () => ({
                 // title: `A`,
@@ -284,15 +298,58 @@ const EntranceNavigator = createStackNavigator(
         },
     }
 );
+
+const needLoginRoute = ['Home','CreateBankCard'];
+
 const defaultGetStateForAction = EntranceNavigator.router.getStateForAction;
 
 
 // 路由调用dispatch 以及调用navigate 方法都会触发getSateForAction  (路由拦截)
 EntranceNavigator.router.getStateForAction = (action,state)=>{
-    console.log(action.routeName)
 
+    let routeName = dealMsgDeal(action.routeName);
+    storage.load({
+        key: 'loginState',
+        id:1000,
+        autoSync: true,
+        syncInBackground: true,
+    }).then(ret=>{
+        console.log(ret)
+        user.loginState = ret.loginState;
+    }).catch(err=>{
+        console.log(2)
+        user.loginState = false;
+    })
 
+    // GLOBAL.loginState
+    //页面是MeScreen并且 global.user.loginState = false || ''（未登录）
+    if (action.routeName === routeName && !user.loginState) {
+        this.routes = [
+            ...state.routes,
+            {key: 'id-'+Date.now(), routeName: 'Login', params: action.params},
+        ];
+        return {
+            ...state,
+            routes,
+            index: this.routes.length - 1,
+        };
+    }
 
     return defaultGetStateForAction(action,state)
 }
+// 需要拦截登录的页面
+function dealMsgDeal(routeName){
+    let theRouteName = '';
+    if(routeName){
+        for (var i in needLoginRoute) {
+            if (needLoginRoute[i] == routeName) {
+                theRouteName = routeName;
+                break;
+            }
+        }
+    }
+    return theRouteName;
+}
+
+
 export default createAppContainer(EntranceNavigator);

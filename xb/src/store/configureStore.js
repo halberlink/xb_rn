@@ -2,6 +2,7 @@
 import {createStore , applyMiddleware} from "redux";
 import createSagaMiddleware , {END} from "redux-saga";
 import rootReducer from '../reducers/Root';
+import thunk from "redux-thunk"
 const { logger } = require('redux-logger');
 
 //middleware Array
@@ -23,12 +24,19 @@ if(_DEV_) {
     middlewares.push(logger);
 }
 
-const store = createStore(rootReducer)
+// const store = createStore(rootReducer)
+//
+// export default store;
+// 添加 sagas 中间件
+// mount middleware on the store
 
+const store = createStore(
+    rootReducer,
+    // initialState,
+    applyMiddleware(thunk)
+);
 export default store;
-//暂不添加 sagas 中间件
-//mount middleware on the store
-
+//
 // const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 //
 // export default function configureStore(initialState) {

@@ -1,5 +1,6 @@
 import * as types from '../constants/ActionTypes'
-
+import StorageConfig from '../config/StorageConfig'
+import storage from '../api/Storage'
 const initSate = {
     loginState:0,
     index:0
@@ -24,7 +25,7 @@ export default function LoginReducer (state = initSate,action){
 
             break;
         case types.RECEIVE_LOGIN_ACTION:
-            console.log(22222222)
+
             return Object.assign({},state,{
                 loginState:2,
                 text:'登录成功'

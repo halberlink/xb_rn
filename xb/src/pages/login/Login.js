@@ -3,6 +3,7 @@ import { connect ,dispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as types from '../../constants/ActionTypes'
 import * as LoginActions from '../../actions/login'
+import StorageConfig from '../../config/StorageConfig'
 import {
     StyleSheet,
     Text,
@@ -29,19 +30,9 @@ class Login extends Component {
     onPressSub = ()=>{
 
         let that = this;
+
         that.props.successLogin({name:1,age:2});
-        // http.get('https://api.douban.com/v2/book/1220562',{
-        //     username:'haobo',
-        //     password:123
-        // },function(res){
-        //     if(res.binding == "平装"){
-        //         console.log("成功")
-        //         that.props.successLogin(res.tags);
-        //         console.log(that.state.loginState)
-        //     }
-        // },function(){
-        //     that.props.errorLogin();
-        // })
+
     }
     componentDidMount(){
     }

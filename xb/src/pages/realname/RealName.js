@@ -10,6 +10,7 @@ import {
     RefreshControl,
     Image
 } from 'react-native';
+import RealNameItem from '../../components/RealName/RealNameItem'
 import pxToDp from '../../api/pxToDp'
 import form from '../../styles/modules/form'
 import layout from '../../styles/modules/layout'
@@ -17,7 +18,7 @@ import inviteStyles from '../../styles/pages/invite'
 class Invite extends Component {
     static navigationOptions = ({navigation})=>{
         return {
-            headerTitle: '邀请好友',//对页面的配置
+            headerTitle: '实名认证',//对页面的配置
             headerRight:<TouchableOpacity style={{marginRight:pxToDp(40)}} onPress={()=>{navigation.state.params.goBackPage();}} activeOpacity={1}><Text>邀请规则</Text></TouchableOpacity>
         }
     };
@@ -48,35 +49,40 @@ class Invite extends Component {
                     />
                 }
             >
-                <View style={inviteStyles.invite}>
-                    <View style={inviteStyles.inviteHead}>
-                        <Image style={inviteStyles.inviteHeadImage} source={{uri:'https://www.p2peye.com/uc_server/data/avatar/000/39/34/90_avatar_middle.jpg'}}></Image>
-                        <Text style={inviteStyles.inviteHeadName}>我的等级：普通会员</Text>
-                            {/*<!-- <Text class="invite-head-info">当前通道费率：{{userInfo.rate}}%</Text> -->*/}
-
-                        <Text style={inviteStyles.inviteHeadName} v-if="check">查看等级费率>></Text>
-                        {/*<Text style={inviteStyles.inviteHeadName} v-else>我要升等级>></Text>*/}
-                    </View>
-
+                <View style={layout.layout40}>
+                    <Text style={form.formMessage}>实名认证需要完成以下3个步骤</Text>
                 </View>
-                <View style={inviteStyles.inviteBody}>
-                    <View style={inviteStyles.inviteBodyLeft}>
-                        <Text style={inviteStyles.inviteBodyLabel}>共邀请(人)</Text>
-                        <Text style={inviteStyles.inviteBodyValue}>0</Text>
-                    </View>
-                    <View style={inviteStyles.inviteBodyCenter}></View>
-                    <View style={inviteStyles.inviteBodyRight}>
-                        <Text style={inviteStyles.inviteBodyLabel}>返现奖励(元)</Text>
-                        <Text style={inviteStyles.inviteBodyValue}>0.00</Text>
-                    </View>
+                <View style={layout.qtMb20}>
+                    <TouchableOpacity
+                        onPress={() => navigate('BaseInfoDetail')}
+                        activeOpacity={1}
+                        >
+                        <RealNameItem
+                            src="https://m.xiaobaijinfu.com/static/Images/weex/shangchuan-jiben.png"
+                            status="未填写"
+                            inner="基本信息填写"
+                            navigate={navigate}
+                        />
+                    </TouchableOpacity>
                 </View>
-                <View style={[layout.layout40,layout.qtPt48]}>
+                <View style={layout.qtMb20}>
+                    <RealNameItem
+                        src="https://m.xiaobaijinfu.com/static/images/weex/shangchuan-shenfen.png"
+                        status="未拍照"
+                        inner="身份证拍照"
+                    />
+                </View>
+                <View>
+                    <RealNameItem
+                        src="https://m.xiaobaijinfu.com/static/images/weex/shangchuan-yinhangka.png"
+                        status="未拍照"
+                        inner="手持银行卡拍照"
+                    />
+                </View>
+                <View style={[layout.layout40,layout.qtPt52]}>
                     <View style={form.formButton}>
-                        <Text style={form.formButtonText}>立即邀请</Text>
+                        <Text style={form.formButtonText}>提交认证</Text>
                     </View>
-                </View>
-                <View style={[layout.layout40,layout.qtPt34,layout.layoutCenter]}>
-                    <Text style={inviteStyles.inviteTip}>邀请用户产生交易即可享受分润，多邀多得!</Text>
                 </View>
             </ScrollView>
             // <View style={styles.container}>
