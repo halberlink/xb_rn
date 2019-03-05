@@ -20,7 +20,7 @@ export function successLogin(result) {
 
     return dispatch=>{
 
-        http.get('https://api.douban.com/v2/book/1220562',{
+        http.get('https://api.xiaobaijinfu.com/profile/getProfileTemp',{
             username:'haobo',
             password:123
         },function(res){
