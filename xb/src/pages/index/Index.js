@@ -13,7 +13,7 @@ import pxToDp from '../../api/pxToDp';
 import PushMessage from '../../components/index/PushMessage'
 export default class Main extends Component {
     static navigationOptions = {
-        headerTitle: '小白信用卡管家123',
+        headerTitle: '小白信用卡管家',
         headerStyle: {
             backgroundColor: '#4089ff',
         },

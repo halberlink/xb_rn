@@ -59,7 +59,7 @@ class Login extends Component {
                 </View>
                 <View style={[styles.warp,styles.formItem]}>
                     <View style={[styles.formItemWrap,styles.formItemBorderBottom]}>
-                        <View>
+                        <View style={styles.formItemInputDv}>
                             <TextInput
                                 style={styles.formItemInput}
                                 keyboardType="numeric"
@@ -159,12 +159,14 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         alignItems:'center'
     },
-    formItemInput:{
+    formItemInputDv:{
         height: pxToDp(80),
+        lineHeight: pxToDp(80)
+    },
+    formItemInput:{
         padding:0,
-        lineHeight: pxToDp(80),
         fontSize: pxToDp(32),
-        color: '#555'
+        color: 'pink'
     },
     layout40:{
         paddingLeft: pxToDp(40),
