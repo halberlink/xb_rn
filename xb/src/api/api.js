@@ -124,9 +124,9 @@ const api = {
             var click_event = data.event;
             data["click_event"] = click_event;
 			delete data["event"];
-            eventModule.BDP(data,function() {
+            // eventModule.BDP(data,function() {
 
-            });
+            // });
 		}
 
     },
