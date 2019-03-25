@@ -14,9 +14,10 @@ import Login from '../pages/login/Login';
 import Home from '../pages/home/Home';
 import Invite from '../pages/invite/Invite';
 import CreateBankCard from '../pages/createBankCard/CreateBankCard';
-import pxToDp from '../api/pxToDp'
+import pxToDp from '../api/pxToDp';
 import RealName from "../pages/realname/RealName";
 import BaseInfoDetail from "../pages/realname/BaseInfoDetail";
+import Guide from '../pages/guide/guide';
 
 
 
@@ -29,7 +30,7 @@ const IndexStack = createStackNavigator(
         Index,
         TestDetail,
         RealName,
-        BaseInfoDetail,
+        BaseInfoDetail
     },
     {
         backBehavior:'none',
@@ -100,9 +101,9 @@ Index_Stack.forEach((item) => {
 })
 const InviteStack = createStackNavigator(
     {
-        Invite:{
-            screen:Invite
-        }
+        Invite,
+        Guide
+        
     },
     {
         backBehavior:'none',
@@ -149,6 +150,35 @@ const InviteStack = createStackNavigator(
         }),
     }
 )
+const Invite_Stack = [InviteStack]
+Invite_Stack.forEach((item) => {
+    item.navigationOptions = ({ navigation }) => {
+        let tabBarVisible = true
+        if (navigation.state.index > 0) {
+            tabBarVisible = false
+        }
+        return {
+            tabBarVisible,
+            tabBarLabel:({ focused, tintColor }) => {
+                const { routeName } = navigation.state.routes[navigation.state.index];
+                if(focused){
+                    return <Text style={{color:'#4089ff',fontSize:12}}>邀请</Text>;
+                } else {
+                    return <Text style={{color:'#7a7d84',fontSize:12}}>邀请</Text>;
+                }
+
+            },
+            tabBarIcon: ({ focused, tintColor }) => {
+                const { routeName } = navigation.state.routes[navigation.state.index];
+                if(focused){
+                    return <Image source={{uri:'https://m.xiaobaijinfu.com/static/images/weex/yaoqing-1.png'}} style={{height:pxToDp(50),width:pxToDp(50)}}></Image>;
+                } else {
+                    return <Image source={{uri:'https://m.xiaobaijinfu.com/static/images/weex/yaoqing-0.png'}} style={{height:pxToDp(50),width:pxToDp(50)}}></Image>;
+                }
+            }
+        }
+    }
+})
 const CreateBankCardStack = createStackNavigator(
     {
         CreateBankCard:{
@@ -260,8 +290,6 @@ const MainScreenNavigator=createBottomTabNavigator(
         Invite:InviteStack,
         CreateBankCard:CreateBankCardStack,
         Home:HomeStack,
-
-
     }
 );
 MainScreenNavigator.navigationOptions = ({navigation})=>{

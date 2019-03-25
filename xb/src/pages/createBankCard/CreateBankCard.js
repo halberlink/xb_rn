@@ -17,15 +17,9 @@ export default class CreateBankCard extends Component {
             tabBarLabel: '邀请',
             tabBarIcon:<View style={{height:30,width:30,backgroundColor:'red'}}></View>,
             headerLeft:()=>{
-
                 let back = <TouchableOpacity onPress={()=>{navigation.state.params.goBackPage();}} activeOpacity={1}>
                     <Image style={{width:pxToDp(50),height:pxToDp(50),marginLeft:pxToDp(30)}} source={{uri:'https://m.xiaobaijinfu.com/static/images/weex/back.png'}}></Image>
                 </TouchableOpacity>
-                // console.log(global.isBack)
-                // if(!global.isBack){
-                //     back= <TouchableOpacity onPress={()=>{navigation.state.params.goBackPage();}} activeOpacity={1}><Text></Text></TouchableOpacity>
-                // }
-
                 return back;
 
             }
