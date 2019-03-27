@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import pxToDp from '../../api/pxToDp';
 import PushMessage from '../../components/index/PushMessage'
+import api from '../../api/api'
 export default class Main extends Component {
     static navigationOptions = {
         headerTitle: '小白信用卡管家',
@@ -112,7 +113,7 @@ export default class Main extends Component {
                         </View>
                         <View style={[styles.uiList,styles.qtMB20]}>
                             <View style={styles.uiListTitle}>
-                                <Text style={styles.uiListTitleText}>申请信用卡</Text>
+                                <Text style={styles.uiListTitleText} onPress={()=>api.toastAlert('HHHHHH')}>申请信用卡</Text>
                             </View>
                         </View>
                         <View style={[styles.uiList,styles.qtMB20]}>

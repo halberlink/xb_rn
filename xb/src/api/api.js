@@ -5,6 +5,7 @@ import DeviceInfo from 'react-native-device-info';
 import http from './Request';
 import validate from './validate';
 import error_code from './error_code';
+import toastView from './toast/toast';
 
 const api = {
     domain : 'https://m.xiaobaijinfu.com',  //weex 文件主域名
@@ -104,10 +105,10 @@ const api = {
     getGraphCode : function(uuid){
 		return this.interface()+"/auth/getCaptchaPic?uuid="+uuid;
     },
-    //
+    // 调用分享
     sharePopup : function(){
 		http.post({
-          url : '/share/inviteTheme',
+          url : 'https://api.xiaobaijinfu.com/share/inviteTheme',
           data : {},
           success : function(ret){
 			if(ret.code != 200) return;
@@ -117,7 +118,7 @@ const api = {
           }
         })
     },
-    //
+    // BDP统计
     BDP : function(data){
 
 		if(data.event){
@@ -145,23 +146,25 @@ const api = {
     
     getUserProfile : function(successFn,errorFn){
         http.post({
-            url : '/profile/userProfile',
+            url : 'https://api.xiaobaijinfu.com/profile/userProfile',
             data : {},
             success : function(ret){
                 successFn && successFn(ret);
             },
             error : function(ret){
-                // modal.toast({
-                //     "message" : "实名信息获取失败",
-                //     "duration" : 2
-                // })
-                
-                // this.refs.toast.show('hello world!');
+                api.toastAlert("实名信息获取失败")
                 errorFn && errorFn(ret);
             }
         })
     },
-    
+
+    toastAlert(message, duration){
+        toastView.show(message, duration)
+    },
+
+    toastShow: function(self,message){
+        self.plToast.show(message);
+    }
 //     getUserLocaltionInfo: function(callback){
 // 		eventModule.locationEnabled({}, function (ret) {
 //         	if(ret.code==200){//开启定位
@@ -172,7 +175,6 @@ const api = {
 // 				eventModule.showLocationAlert({},function(){});	//调用开启定位的提醒框
 // 			}
 // 		})
-	
 // 	}
 }
 export default api;

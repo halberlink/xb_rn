@@ -10,7 +10,7 @@ export default class JuneActiveEntrance extends Component{
     render () {
         const navigate = this.props.navigate
         return (
-            <View>
+            <View style={styles.active_entrance_dv}>
                 <TouchableOpacity activeOpacity={1} onPress={() => navigate('active_juneCashback')}>
                     <Image 
                         source={{uri:'https://m.xiaobaijinfu.com/static/images/weex/june_active_entrance.png'}}
@@ -24,13 +24,14 @@ export default class JuneActiveEntrance extends Component{
 }
 
 const styles = StyleSheet.create({
+    active_entrance_dv: {
+        position: 'absolute',
+        right: pxToDp(24),
+        bottom: pxToDp(182),
+        zIndex: 100000,
+    },
     active_entrance: {
         width: pxToDp(102),
-        height: pxToDp(100),
-        // position:'absolute',
-        // right:pxToDp(24),
-        // bottom:pxToDp(182),
-        // zIndex: 20000,
-        backgroundColor: 'pink'
+        height: pxToDp(102)
     }
 })
