@@ -18,6 +18,8 @@ import pxToDp from '../api/pxToDp';
 import RealName from "../pages/realname/RealName";
 import BaseInfoDetail from "../pages/realname/BaseInfoDetail";
 import Guide from '../pages/guide/guide';
+import Repayment from '../pages/repayment/repayment';
+import RepaymentHistory from '../pages/repaymentHistory/repaymentHistory';
 
 
 
@@ -30,7 +32,10 @@ const IndexStack = createStackNavigator(
         Index,
         TestDetail,
         RealName,
-        BaseInfoDetail
+        BaseInfoDetail,
+        Repayment,
+        RepaymentHistory,
+        Guide
     },
     {
         backBehavior:'none',
@@ -327,7 +332,7 @@ const EntranceNavigator = createStackNavigator(
     }
 );
 
-const needLoginRoute = ['Home','CreateBankCard'];
+const needLoginRoute = [];
 
 const defaultGetStateForAction = EntranceNavigator.router.getStateForAction;
 

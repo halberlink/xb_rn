@@ -145,17 +145,16 @@ const api = {
     },
     
     getUserProfile : function(successFn,errorFn){
-        http.post({
-            url : 'https://api.xiaobaijinfu.com/profile/userProfile',
-            data : {},
-            success : function(ret){
+        http.post('https://api.xiaobaijinfu.com/profile/userProfile',
+            '',
+             function(ret){
                 successFn && successFn(ret);
-            },
-            error : function(ret){
+             },
+             function(err){
                 api.toastAlert("实名信息获取失败")
-                errorFn && errorFn(ret);
-            }
-        })
+                errorFn && errorFn(err);
+             }
+        )
     },
 
     toastAlert(message, duration){

@@ -11,6 +11,9 @@ import {
 } from 'react-native';
 import pxToDp from '../../api/pxToDp';
 import PushMessage from '../../components/index/PushMessage'
+import api from '../../api/api'
+// import http from '../../api/Request';
+import req from '../../api/request2';
 export default class Main extends Component {
     static navigationOptions = {
         headerTitle: '小白信用卡管家',
@@ -54,7 +57,36 @@ export default class Main extends Component {
 
 
     componentDidMount(){
-        console.log(this.props.navigation)
+        console.log(999)
+        req({
+            url: '/order/getPaymentInfo',
+            method: 'POST',
+            data: {},
+            beforeFn: () => {},
+            success: res => console.log(res),
+            error: (status,statusText) => console.log(status,statusText)
+        })
+    }
+    jumpRepayment () {
+
+    }
+    getRealName() {
+        
+
+        // http.post('https://api.xiaobaijinfu.com/order/getPaymentInfo',{},(ret)=>{
+        //     if(ret.code == 200){
+        //         // self.status = ret.data.status;
+        //         // if(self.status == 3){
+        //         //   self.repaymentUrl = '/repayment/';
+                  this.props.navigation.navigate('Repayment')
+        //         // }else{
+        //         //   self.repaymentUrl = '/real_name/';
+        //         //   this.props.navigation.navigate('RealName')
+        //         // }
+        //       }else{
+        //         api.toastAlert(api.errCode[ret.code])
+        //       }
+        // })
     }
     render() {
         console.log(this.state.name)
@@ -72,11 +104,9 @@ export default class Main extends Component {
                                 <Text style={styles.uiFnTxt}>立即办卡</Text>
                             </View>
                         </TouchableOpacity>
-
-
                         <View style={styles.uiFnLine}></View>
                         <TouchableOpacity
-                            onPress={() => navigate('RealName')}
+                            onPress={() => this.getRealName()}
                             activeOpacity={1}
                         >
                             <View style={styles.uiFnBox}>
@@ -112,7 +142,7 @@ export default class Main extends Component {
                         </View>
                         <View style={[styles.uiList,styles.qtMB20]}>
                             <View style={styles.uiListTitle}>
-                                <Text style={styles.uiListTitleText}>申请信用卡</Text>
+                                <Text style={styles.uiListTitleText} onPress={() => this.getRealName()}>申请信用卡1</Text>
                             </View>
                         </View>
                         <View style={[styles.uiList,styles.qtMB20]}>
