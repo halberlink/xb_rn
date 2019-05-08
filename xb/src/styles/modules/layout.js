@@ -60,10 +60,16 @@ const styles = StyleSheet.create({
         marginLeft: pxToDp(32),
     },
     qtMl38:{
-        marginLeft: pxToDp(18),
+        marginLeft: pxToDp(38),
+    },
+    qtMl40:{
+        marginLeft: pxToDp(40),
     },
     qtMl55:{
         marginLeft: pxToDp(55),
+    },
+    qtMR40:{
+        marginRight: pxToDp(40),
     },
     qtPt75:{
         paddingTop: pxToDp(75),

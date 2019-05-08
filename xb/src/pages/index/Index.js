@@ -11,9 +11,9 @@ import {
 } from 'react-native';
 import pxToDp from '../../api/pxToDp';
 import PushMessage from '../../components/index/PushMessage'
-import api from '../../api/api'
+import api from '../../api/api';
 // import http from '../../api/Request';
-import req from '../../api/request2';
+import http from '../../api/requestNew';
 export default class Main extends Component {
     static navigationOptions = {
         headerTitle: '小白信用卡管家',
@@ -58,7 +58,7 @@ export default class Main extends Component {
 
     componentDidMount(){
         console.log(999)
-        req({
+        http({
             url: '/order/getPaymentInfo',
             method: 'POST',
             data: {},

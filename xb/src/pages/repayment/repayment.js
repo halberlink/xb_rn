@@ -17,7 +17,6 @@ export default class Repayment extends Component {
          headerStyle: {
              backgroundColor: '#fff',
          },
-         headerTintColor: 'red',
          headerLeft:(
             <TouchableOpacity onPress={()=>{navigation.goBack()}} activeOpacity={1}>
                 <Image style={{width:pxToDp(50),height:pxToDp(50),marginLeft:pxToDp(30)}} source={{uri:'http://m.xiaobaijinfu.com/static/images/weex/back.png'}}></Image>

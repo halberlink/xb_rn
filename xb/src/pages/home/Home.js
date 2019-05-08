@@ -21,7 +21,7 @@ class Home extends Component {
     static navigationOptions = ({navigation})=>{
         return {
             headerTitle: '我的',//对页面的配置
-            headerRight:<TouchableOpacity style={{marginRight:pxToDp(40)}} onPress={()=>{navigation.state.params.goBackPage();}} activeOpacity={1}><Text>设置</Text></TouchableOpacity>
+            headerRight:<TouchableOpacity style={{marginRight:pxToDp(40)}} onPress={()=>{navigation.navigate('Setup')}} activeOpacity={1}><Text>设置</Text></TouchableOpacity>
         }
     };
     constructor(props){

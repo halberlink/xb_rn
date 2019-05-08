@@ -45,8 +45,12 @@ const styles = StyleSheet.create({
         lineHeight:pxToDp(105),
         fontSize: pxToDp(30),
         color: '#555',
-    }
-    ,
+    },
+    formItemInputShort:{
+        maxWidth: pxToDp(300),
+        fontSize: pxToDp(30),
+        color: '#555',
+    },
     formItemBorder:{
         // borderTopStyle: 'solid',
         borderTopWidth: 1,
@@ -89,8 +93,11 @@ const styles = StyleSheet.create({
     formItemVcode:{
         width: pxToDp(115),
         height: pxToDp(50),
+    },
+    formImgCode: {
+        width: pxToDp(197),
+        height: pxToDp(80),
     }
-
 });
 
 

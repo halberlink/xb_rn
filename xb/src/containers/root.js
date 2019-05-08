@@ -20,6 +20,8 @@ import BaseInfoDetail from "../pages/realname/BaseInfoDetail";
 import Guide from '../pages/guide/guide';
 import Repayment from '../pages/repayment/repayment';
 import RepaymentHistory from '../pages/repaymentHistory/repaymentHistory';
+import Setup from '../pages/setup/setup';
+import ChangePhone from '../pages/changePhone/changePhone';
 
 
 
@@ -35,7 +37,9 @@ const IndexStack = createStackNavigator(
         BaseInfoDetail,
         Repayment,
         RepaymentHistory,
-        Guide
+        Guide,
+        Setup,
+        ChangePhone
     },
     {
         backBehavior:'none',
